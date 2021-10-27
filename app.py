@@ -1,11 +1,11 @@
 #!/usr/bin/env python
-import click
+from flask import Flask
 
-@click.command()
-@click.option("--name")
-def hello(name):
-    click.echo(f'How are you, {name}?')
+app = Flask(__name__)
+@app.route("/")
+def hello():
+    return 'How are you?'
 
 if __name__ == '__main__':
     #pylint: disable=no-value-for-parameter
-    hello()
+    app.run(debug=True)
